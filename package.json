@@ -1,0 +1,1 @@
+{"dependencies":{"express":"^4.21.2","qrcode":"^1.5.4"},"description":"SwiftLink - full-stack URL shortener with click analytics and QR codes","license":"MIT","main":"server.js","name":"swiftlink","scripts":{"start":"node server.js","test":"node --test test/*.test.js"},"type":"commonjs","version":"1.0.0"}
