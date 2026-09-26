@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SwiftLink — URL Shortener</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="brand">⚡ SwiftLink</div>
+  <div class="tagline">Shorten. Share. Track.</div>
+</header>
+
+<main>
+  <section class="card">
+    <h2>Create a short link</h2>
+    <form id="create-form">
+      <input id="url-input" type="url" placeholder="Paste a long URL… e.g. https://example.com/article" required>
+      <input id="alias-input" type="text" placeholder="Custom alias (optional)" pattern="[A-Za-z0-9_-]{1,64}" title="Letters, numbers, _ or -">
+      <button type="submit">Shorten</button>
+    </form>
+    <div id="create-result" class="result hidden">
+      <a id="result-link" href="#" target="_blank"></a>
+      <button id="copy-btn" type="button">📋 Copy</button>
+      <span id="copy-ok" class="copy-ok hidden">Copied!</span>
+    </div>
+    <div id="create-error" class="error hidden"></div>
+  </section>
+
+  <section class="card">
+    <h2>Your links</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Short link</th><th>Destination</th><th>Clicks</th><th>Created</th><th>Actions</th></tr>
+        </thead>
+        <tbody id="links-body">
+          <tr><td colspan="5" class="muted">Loading…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card hidden" id="stats-card">
+    <h2>📊 Stats for <span id="stats-code"></span></h2>
+    <div class="stat-tiles">
+      <div class="tile"><div class="tile-num" id="stat-total">0</div><div class="tile-label">Total clicks</div></div>
+      <div class="tile"><div class="tile-num" id="stat-today">0</div><div class="tile-label">Clicks today</div></div>
+    </div>
+    <h3>Clicks per day (last 14 days)</h3>
+    <canvas id="chart" width="720" height="220"></canvas>
+    <h3>Top referrers</h3>
+    <ul id="referrers" class="referrers"></ul>
+    <div class="qr-row">
+      <div>
+        <h3>QR code</h3>
+        <img id="qr-img" alt="QR code" class="hidden">
+      </div>
+    </div>
+    <button id="stats-close" type="button" class="ghost">Close</button>
+  </section>
+</main>
+
+<footer>SwiftLink · built with Node.js + SQLite</footer>
+<script src="app.js"></script>
+</body>
+</html>
